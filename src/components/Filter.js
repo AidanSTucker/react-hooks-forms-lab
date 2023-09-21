@@ -1,29 +1,25 @@
-import React from "react";
-import items from "../data/items"
+import React, { useState } from "react";
 
-function Filter({ onCategoryChange }) {
-
-  
-  function handleSearch(e) {
-    e.preventDefault();
-    console.log("fsfsfg")
-    if (e.target.value === items.name.value) {
-      return(items)
-    }
-    
-  }
+function Filter({ onCategoryChange, onSearchChange }) {
+ 
+  const [searchText, setSearchText] = useState("");
 
 
-
-
+  const handleSearchChange = (event) => {
+    console.log("something");
+    const newText = event.target.value;
+    setSearchText(newText); 
+    onSearchChange(newText); 
+  };
 
   return (
     <div className="Filter">
-      <input 
-      type="text" 
-      name="search" 
-      placeholder="Search..." 
-      onChange={handleSearch}
+      <input
+        type="text"
+        name="search"
+        placeholder="Search..."
+        value={searchText} 
+        onChange={handleSearchChange} 
       />
       <select name="filter" onChange={onCategoryChange}>
         <option value="All">Filter by category</option>
