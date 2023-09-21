@@ -1,16 +1,34 @@
 import React, { useState } from "react";
+import items from "../data/items"
 
-function Filter({ onCategoryChange, onSearchChange }) {
+
+
+function Filter({ onCategoryChange  }) {
  
   const [searchText, setSearchText] = useState("");
 
 
   const handleSearchChange = (event) => {
-    console.log("something");
     const newText = event.target.value;
+
+    const filteredItems = items.filter(item => item.name.includes(newText));
+
+
+    if (filteredItems.length > 0) {
+      console.log(filteredItems);
+      
+      
+        }
+
+    else {
+      console.log("No results matching");
+    };
+
     setSearchText(newText); 
-    onSearchChange(newText); 
+    
   };
+
+
 
   return (
     <div className="Filter">
@@ -30,5 +48,7 @@ function Filter({ onCategoryChange, onSearchChange }) {
     </div>
   );
 }
+
+
 
 export default Filter;
