@@ -3,30 +3,9 @@ import items from "../data/items"
 
 
 
-function Filter({ onCategoryChange  }) {
+function Filter({ onCategoryChange, onSearchChange, search }) {
  
-  const [searchText, setSearchText] = useState("");
-
-
-  const handleSearchChange = (event) => {
-    const newText = event.target.value;
-
-    const filteredItems = items.filter(item => item.name.includes(newText));
-
-
-    if (filteredItems.length > 0) {
-      console.log(filteredItems);
-      
-      
-        }
-
-    else {
-      console.log("No results matching");
-    };
-
-    setSearchText(newText); 
-    
-  };
+ 
 
 
 
@@ -36,8 +15,8 @@ function Filter({ onCategoryChange  }) {
         type="text"
         name="search"
         placeholder="Search..."
-        value={searchText} 
-        onChange={handleSearchChange} 
+        value={search} 
+        onChange={onSearchChange} 
       />
       <select name="filter" onChange={onCategoryChange}>
         <option value="All">Filter by category</option>
