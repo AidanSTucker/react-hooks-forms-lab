@@ -32,7 +32,7 @@ function ShoppingList({ items }) {
       <ItemForm />
       <Filter onCategoryChange={handleCategoryChange} 
       onSearchChange={handleSearchChange}
-      searchText={searchText}
+      search={searchText}
       />
       <ul className="Items">
         {filteredItems.map((item) => (
